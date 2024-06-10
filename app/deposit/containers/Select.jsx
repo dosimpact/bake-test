@@ -1,6 +1,7 @@
 import CryptoItem from "@/components/CryptoItem";
 import React from "react";
 import useStep, { DEPOSIT_STEP } from "../hooks/useStep";
+import useDeposit from "../hooks/useDeposit";
 
 const CryptoItemList = [
   {
@@ -28,9 +29,11 @@ const CryptoItemList = [
 
 const Select = () => {
   const { currentStep, initStep, setStep } = useStep();
+  const { onSelectTicker } = useDeposit();
 
-  const onClickTicker = () => {
+  const onClickTicker = (item) => {
     setStep(DEPOSIT_STEP.AMOUNT);
+    onSelectTicker(item?.ticker, Number(item?.quantity));
   };
 
   return (
@@ -46,7 +49,7 @@ const Select = () => {
             ticker={item.ticker}
             name={item.name}
             quantity={item.quantity}
-            onClickTicker={onClickTicker}
+            onClickTicker={() => onClickTicker(item)}
           />
         ))}
       </div>

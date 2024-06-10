@@ -28,20 +28,31 @@ const Navigator = () => {
     }
   };
 
+  const onClose = () => {
+    if (currentStep === DEPOSIT_STEP.COMPLETED) {
+      push("/");
+    }
+  };
+
   return (
     <section>
-      <div className=" flex flex-row items-center">
-        {showBack && (
-          <span onClick={onGoBack} className=" cursor-pointer">
-            <IoChevronBack size={20} />
-          </span>
-        )}
-        <span className="mx-[12px]"> {title}</span>
-        {showClose && (
-          <span className=" cursor-pointer">
-            <IoClose size={20} />
-          </span>
-        )}
+      <div className=" flex flex-row items-center justify-between ">
+        <div className="flex flex-row items-center">
+          {showBack && (
+            <span onClick={onGoBack} className=" cursor-pointer">
+              <IoChevronBack size={20} />
+            </span>
+          )}
+          <span className="mx-[12px]"> {title}</span>
+        </div>
+
+        <div>
+          {showClose && (
+            <span onClick={onClose} className=" cursor-pointer">
+              <IoClose size={20} />
+            </span>
+          )}
+        </div>
       </div>
     </section>
   );

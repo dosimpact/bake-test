@@ -17,7 +17,7 @@ interface UseStepStore {
 
 const useStep = create<UseStepStore>((set) => ({
   currentStep: DEPOSIT_STEP.AMOUNT,
-  initStep: () => set({ currentStep: DEPOSIT_STEP.PASSWORD }),
+  initStep: () => set({ currentStep: DEPOSIT_STEP.SELECTE }),
   setStep: (step: TStep) => set({ currentStep: step }),
 }));
 
