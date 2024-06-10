@@ -51,6 +51,7 @@ const Password = () => {
       >
         {Array.from({ length: 6 }, (_, index) => (
           <div
+            key={index}
             className={cn(
               "bg-[#DCDCDC] w-4 h-4 rounded-full",
               index < userInputPassword.length && "bg-[#F76800]"

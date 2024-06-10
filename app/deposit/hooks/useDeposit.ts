@@ -9,21 +9,22 @@ export const DEPOSIT_ERROR_TYPE = {
 interface UseDepositStore {
   ticker: string;
   totalAmountOwned: number;
-  userInputStackQuantity: number | null;
-  expectedFee: number;
+  userInputStackQuantity: string | null;
+  expectedFee: number | null;
   error: null | string;
   errorType: null | keyof typeof DEPOSIT_ERROR_TYPE;
   setUserInputStackQuantity: (userInputVaule: string) => void;
   userInputPassword: string;
   setUserInputPassword: (userInputValue: string) => void;
+  initDeposit: () => void;
 }
 
 const initValue = {
   ticker: "",
   totalAmountOwned: 0,
-  userInputStackQuantity: 0,
-  expectedFee: 0,
-  totalOutput: 0,
+  userInputStackQuantity: null,
+  expectedFee: null,
+  totalOutput: null,
   error: null,
   errorType: null,
   userInputPassword: "",

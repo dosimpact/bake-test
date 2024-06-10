@@ -16,7 +16,7 @@ const Page = () => {
   useEffect(() => {
     initStep();
     initDeposit();
-  }, []);
+  }, [initStep, initDeposit]);
 
   return (
     <MobileLayout>
