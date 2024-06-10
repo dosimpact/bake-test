@@ -18,8 +18,7 @@ interface UseDepositStore {
   setUserInputPassword: (userInputValue: string) => void;
 }
 
-// TODO bigdecimal or bigInt
-const useDeposit = create<UseDepositStore>((set) => ({
+const initValue = {
   ticker: "",
   totalAmountOwned: 0,
   userInputStackQuantity: 0,
@@ -28,6 +27,12 @@ const useDeposit = create<UseDepositStore>((set) => ({
   error: null,
   errorType: null,
   userInputPassword: "",
+};
+
+// TODO bigdecimal or bigInt
+const useDeposit = create<UseDepositStore>((set) => ({
+  ...initValue,
+  initDeposit: () => set(() => ({ ...initValue })),
   onSelectTicker: (ticker: string, totalAmountOwned: number) =>
     set(() => {
       return {

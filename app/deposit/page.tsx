@@ -7,13 +7,16 @@ import Password from "./containers/Password";
 import Completed from "./containers/Completed";
 import useStep, { DEPOSIT_STEP } from "./hooks/useStep";
 import MobileLayout from "@/components/layout/MobileLayout";
+import useDeposit from "./hooks/useDeposit";
 
 const Page = () => {
-  const { currentStep, initStep, setStep } = useStep();
+  const { currentStep, initStep } = useStep();
+  const { initDeposit } = useDeposit();
 
   useEffect(() => {
     initStep();
-  }, [initStep]);
+    initDeposit();
+  }, []);
 
   return (
     <MobileLayout>
