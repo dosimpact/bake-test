@@ -1,9 +1,15 @@
 import Image from "next/image";
 import React from "react";
 
-const CryptoItem = ({ ticker = "", name = "", quantity = 0 }) => {
+const CryptoItem = ({
+  ticker = "",
+  name = "",
+  quantity = 0,
+  onClickTicker = () => null,
+}) => {
   return (
     <section
+      onClick={() => onClickTicker(ticker)}
       className=" shadow border-1 border-[#EBEEF1] rounded-[8px] p-[12px]
       flex flex-row items-center justify-between cursor-pointer 
     "

@@ -1,5 +1,6 @@
 import CryptoItem from "@/components/CryptoItem";
 import React from "react";
+import useStep, { DEPOSIT_STEP } from "../hooks/useStep";
 
 const CryptoItemList = [
   {
@@ -26,6 +27,12 @@ const CryptoItemList = [
 ];
 
 const Select = () => {
+  const { currentStep, initStep, setStep } = useStep();
+
+  const onClickTicker = () => {
+    setStep(DEPOSIT_STEP.AMOUNT);
+  };
+
   return (
     <section>
       <h1 className=" mt-[32px] w-full font-bold text-[22px] ">
@@ -39,6 +46,7 @@ const Select = () => {
             ticker={item.ticker}
             name={item.name}
             quantity={item.quantity}
+            onClickTicker={onClickTicker}
           />
         ))}
       </div>
