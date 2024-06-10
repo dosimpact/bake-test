@@ -22,7 +22,7 @@ interface UseDepositStore {
 const initValue = {
   ticker: "",
   totalAmountOwned: 0,
-  userInputStackQuantity: null,
+  userInputStackQuantity: "",
   expectedFee: null,
   totalOutput: null,
   error: null,

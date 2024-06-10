@@ -18,7 +18,6 @@ const Amount = () => {
 
   const onInput = (inputValue) => {
     const floatRegex = /^\d*\.?\d*$/;
-
     if (inputValue === "" || floatRegex.test(inputValue)) {
       setUserInputStackQuantity(inputValue);
     }
@@ -26,7 +25,7 @@ const Amount = () => {
 
   useEffect(() => {
     onInput(totalAmountOwned * (1 - 0.1));
-  }, [totalAmountOwned, onInput]);
+  }, []);
 
   return (
     <section className="flex flex-col justify-between h-[100%] ">
