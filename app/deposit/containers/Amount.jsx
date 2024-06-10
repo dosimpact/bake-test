@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useDeposit, { DEPOSIT_ERROR_TYPE } from "../hooks/useDeposit";
 import useStep from "../hooks/useStep";
 
@@ -6,7 +6,6 @@ const Amount = () => {
   const {
     error,
     expectedFee,
-    stackQuantity,
     ticker,
     totalAmountOwned,
     totalOutput,
@@ -14,7 +13,20 @@ const Amount = () => {
     setUserInputStackQuantity,
     userInputStackQuantity,
   } = useDeposit();
+
   const { setStep } = useStep();
+
+  const onInput = (inputValue) => {
+    const floatRegex = /^\d*\.?\d*$/;
+
+    if (inputValue === "" || floatRegex.test(inputValue)) {
+      setUserInputStackQuantity(inputValue);
+    }
+  };
+
+  useEffect(() => {
+    onInput(totalAmountOwned * (1 - 0.1));
+  }, [totalAmountOwned]);
 
   return (
     <section className="flex flex-col justify-between h-[100%] ">
@@ -35,14 +47,7 @@ const Amount = () => {
           <div className="flex flex-row justify-between rounded-lg border border-[#DCDCDC] px-3 py-4">
             <input
               value={userInputStackQuantity}
-              onChange={(e) => {
-                const inputValue = e.target.value;
-                const floatRegex = /^\d*\.?\d*$/;
-
-                if (inputValue === "" || floatRegex.test(inputValue)) {
-                  setUserInputStackQuantity(inputValue);
-                }
-              }}
+              onChange={(e) => onInput(e.target.value)}
             ></input>
             <div className=" text-[#222]">AVAX</div>
           </div>
